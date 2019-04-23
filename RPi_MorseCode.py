@@ -26,22 +26,24 @@ def space():
 
 def click():
     text = textentry.get().lower()
-
-    for letter in text:
-        if letter == " ":
-            space()
-        elif letter in convert:
-            morseconvert = convert[letter]
-            for symbol in morseconvert:
-                if symbol == ".":
-                    dot()
-                elif symbol =="-":
-                    dash()
-                else:
-                    print("Not a '-' or '.'")
-            space()
-        else:
-            print("Character not supported")
+    if (len(text) < 12):
+        for letter in text:
+            if letter == " ":
+                space()
+            elif letter in convert:
+                morseconvert = convert[letter]
+                for symbol in morseconvert:
+                    if symbol == ".":
+                        dot()
+                    elif symbol =="-":
+                        dash()
+                    else:
+                        print("Not a '-' or '.'")
+                space()
+            else:
+                print("Character not supported")
+    else:
+        print("Enter name less than 12 character")
 
 def close():
     GPIO.cleanup()
